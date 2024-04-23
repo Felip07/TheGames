@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 m-auto">
+    <h3 style="text-align: center;">Editar Jogo:</h3><br>
+    <form action="{{url_for('edit', id=g.id)}}" method="POST">
+        <input type="text" name="titulo" class="form-control" value="{{g.titulo}}" required><!--g.titulo eo atributo que requisitamos aqui esta o macete-->
+        <input type="number" name="ano" class="form-control" value="{{g.ano}}" required>
+        <input type="text" name="categoria" value="{{g.categoria}}" required>
+        <input type="text" name="plataforma" class="form-control" value="{{g.plataforma}}" required>
+        <input type="number" name="preco" class="form-control" value="{{g.preco}}" required>
+        <input type="number" name="quantidade" class="fomr-control" value="{{g.quantidade}}" required><br>
+        <a href="{{url_for('edit', id=g.id)}}" onclick="return confirm('Você confirma as alterações?')"><input type="submit" value="Alterar" class="btn btn-warning"></a>
+        <a href="{{url_for('estoque')}}"><input type="button" value="Cancelar" class="btn btn-danger"></a>
+    </form>
+</div>
+{% endblock content %}

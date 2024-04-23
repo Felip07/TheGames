@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Esta é a página de games!</h1>
+    <hr>
+    <p><strong>Game mais jogado no momento:</strong></p>
+    {# Comentário no Jinja2 #}
+
+    {% for k, v in game.items() %}
+    <details>
+        <summary>{{k}}</summary>
+        <p>{{v}}</p>
+    </details>
+    {% endfor %}
+
+    <p>O jogo {{game['Título']}} tem {{2024-game['Ano']}} anos.</p>
+    <p>Está sendo jogado por:</p>
+    <!-- <p>{{jogadores}}</p> -->
+    <ol>
+        {% for jogador in jogadores %}
+            <li>{{jogador}}</li>
+        {% endfor %}
+    </ol>
+
+    <hr>
+        <form action="{{url_for('games')}}" method="POST"> <!-- Função da rota def games-->
+            <h4>Entar no jogo:</h4>
+            <input type="text" name="jogador" placeholder="Digite seu nome">
+            <input type="submit" value="Entrar">
+        </form>
+    <hr>
+        <form action="{{url_for('games')}}" method="POST"> <!-- Função da rota def games-->
+            <h4>Jogos:</h4>
+            <input type="text" name="jogos" placeholder="Digite o nome do game">
+            <input type="submit" value="Cadastrar">
+        </form>
+    
+    <ol>
+        {% for jogo in jogos %}
+            <li>{{jogo}}</li>
+        {% endfor %}
+    </ol>
+
+{% endblock content%}
